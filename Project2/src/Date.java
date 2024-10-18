@@ -18,6 +18,11 @@ public class Date implements Comparable<Date> {
         this.day = day;
         this.year = year;
     }
+    public Date(String month, String day, String year){
+        this.month = Integer.parseInt(month);
+        this.day = Integer.parseInt(day);
+        this.year = Integer.parseInt(year);
+    }
 
     public boolean isValid() {
         if (year < 1) return false;

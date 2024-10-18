@@ -13,9 +13,9 @@ public class Sort {
     public static void sortAppointments(List<Appointment> list, char key) {
         switch (key) {
             case 'd': //date
-                for (int i = 0; i < list.getSize() - 1; i++) {
+                for (int i = 0; i < list.size() - 1; i++) {
                     int index = i;
-                    for (int j = i + 1; i < list.getSize(); j++) {
+                    for (int j = i + 1; i < list.size(); j++) {
                         if (list.get(j).getDate().compareTo(list.get(index).getDate()) < 0) {
                             index = j;
                         }
@@ -24,9 +24,9 @@ public class Sort {
                 }
                 break;
             case 'p': //patient
-                for (int i = 0; i < list.getSize() - 1; i++) {
+                for (int i = 0; i < list.size() - 1; i++) {
                 int index = i;
-                for (int j = i + 1; i < list.getSize(); j++) {
+                for (int j = i + 1; i < list.size(); j++) {
                     if (list.get(j).getPatient().compareTo(list.get(index).getPatient()) < 0) {
                         index = j;
                     }
@@ -35,9 +35,9 @@ public class Sort {
             }
                 break;
             case 't': //timeslot
-                for (int i = 0; i < list.getSize() - 1; i++) {
+                for (int i = 0; i < list.size() - 1; i++) {
                     int index = i;
-                    for (int j = i + 1; i < list.getSize(); j++) {
+                    for (int j = i + 1; i < list.size(); j++) {
                         if (list.get(j).timeslot.compareTo(list.get(index).timeslot) < 0) {
                             index = j;
                         }
@@ -57,9 +57,9 @@ public class Sort {
     }
 
     public static void sortProviders(List<Provider> list){
-        for (int i = 0; i < list.getSize() - 1; i++) {
+        for (int i = 0; i < list.size() - 1; i++) {
             int index = i;
-            for (int j = i + 1; i < list.getSize(); j++) {
+            for (int j = i + 1; i < list.size(); j++) {
                 if (list.get(j).getLocation().compareTo(list.get(index).getLocation()) < 0) {
                     index = j;
                 }

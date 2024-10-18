@@ -26,7 +26,7 @@ public enum Location {
         return county;
     }
 
-    public String getZip(){
+    public String getZipCode(){
         return zip;
     }
 }

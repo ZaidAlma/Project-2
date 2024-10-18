@@ -18,9 +18,22 @@ public enum Specialty {
         this.charge = charge;
     }
 
+
     public int getCharge(){
         return charge;
     }
 
 
+    public String getSpeciality() {
+        if(charge == 250){
+            return "FAMILY";
+        }
+        else if(charge == 300){
+            return "PEDIATRICIAN";
+        }
+        else if(charge == 350){
+            return "ALLERGIST";
+        }
+        return null;
+    }
 }

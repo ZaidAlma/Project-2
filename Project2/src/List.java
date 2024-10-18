@@ -85,7 +85,7 @@ public class List<E> implements Iterable<E> {
         };
     }
 
-    public int getSize(){
+    public int size(){
         return size;
     }
 

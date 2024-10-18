@@ -13,4 +13,9 @@ public class Person implements Comparable<Person>{
         return this.profile.compareTo(otherPerson.profile);
     }
 
+    @Override
+    public String toString() {
+        return profile.toString();
+    }
+
 }

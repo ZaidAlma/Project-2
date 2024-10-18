@@ -41,6 +41,13 @@ public class Profile implements Comparable<Profile> {
         return fname + " " + lname + " " + dob;
     }
 
+    public String getFirstName(){
+        return fname;
+    }
+    public Date getDob(){
+        return dob;
+    }
+
     public String getLastName() {
         return lname;
     }
