@@ -8,10 +8,68 @@ import java.util.Iterator;
 public class ClinicManager  {
 
     public void run() {
+        String userCommand = "";
+        Scanner scan = new Scanner(System.in);
         System.out.println("Clinic Manager is running.");
         List<Provider> providers = getProvider();
-        //Sort.sortProviders(providers);
+        Sort.sortProviders(providers);
         printProviders(providers);
+        while(true){
+            System.out.println("Please enter a command:");
+            userCommand = scan.nextLine();
+            if(userCommand.contains(", ")){
+                System.out.println("Invalid Command");
+                continue;
+            }
+            if(userCommand.equals("Q"))
+                break;
+
+            runCommand(userCommand.split(","));
+        }
+        System.out.println("Clinic Manager Terminated");
+    }
+    private void runCommand(String[] command){
+        checkCommand(command);
+    }
+    private void checkCommand(String[] commandInputs){
+        if(commandInputs.length == 0){
+            System.out.println("Invalid Command");
+            return;
+        }
+        else if(commandInputs.length == 1 && commandInputs[0].length() < 1 || (commandInputs.length == 1 && commandInputs[0].length() > 2)){
+            System.out.println("Invalid Command");
+            return;
+        }
+        else if(commandInputs.length == 1 && commandInputs[0].length() ==1 && !commandInputs[0].equals("Q")){
+            System.out.println("Invalid Command");
+            return;
+        }
+        else if( (commandInputs.length == 1 && commandInputs[0].length() == 2 && !commandInputs[0].equals("PA"))){
+            System.out.println("Invalid Command");
+            return;
+        }
+        else if(commandInputs[0].equals("D") && commandInputs.length != 7 || commandInputs.equals("T") && commandInputs.length != 7){
+            System.out.println("Invalid Command");
+            return;
+        }
+    }
+    private boolean hasErrors(String[] commandInputs){
+        if(commandInputs.length == 0){
+            return true;
+        }
+        else if(commandInputs.length == 1 && commandInputs[0].length() < 1 || (commandInputs.length == 1 && commandInputs[0].length() > 2)){
+            return true;
+        }
+        else if(commandInputs.length == 1 && commandInputs[0].length() ==1 && !commandInputs[0].equals("Q")){
+            return true;
+        }
+        else if( (commandInputs.length == 1 && commandInputs[0].length() == 2 && !commandInputs[0].equals("PA"))){
+            return true;
+        }
+        else if(commandInputs[0].equals("D") && commandInputs.length != 7 || commandInputs.equals("T") && commandInputs.length != 7){
+            return true;
+        }
+        return false;
     }
     private List<Provider> getProvider(){
         List<Provider> providers = new List();
@@ -93,38 +151,4 @@ public class ClinicManager  {
             return null;
         }
     }
-
-    /*
-
-    private Provider readProvider(String s){
-        String[] string = s.split("\\s+");
-        String firstName = string[0];
-        String lastName = string[1];
-        String DOB = string[2];
-        String location = string[3];
-        String specialty = string[4];
-        String npi = string[5];
-
-    }
-
-        private List<Provider> getProviders() {
-            List<Provider> providers1 = new List<>();
-            List<Technician> rotationList = new List<>();
-            try {
-                File file = new File("providers.txt");
-                Scanner scanner = new Scanner(file);
-                while (scanner.hasNextLine()) {
-                    String nextLine = scanner.nextLine().trim();
-                    if (!nextLine.isEmpty()) {
-                        Provider provider = readProvider(nextLine);
-                        providers1.add(provider);
-                    }
-                }
-                scanner.close();
-            } catch (FileNotFoundException e) {
-                System.out.println("Error: providers.txt not found"); //We want this to make sure it's found
-            }
-            return providers1;
-        }
-*/
 }
