@@ -6,14 +6,16 @@ import java.util.Scanner;
 import java.util.Iterator;
 
 public class ClinicManager  {
-
     public void run() {
         String userCommand = "";
         Scanner scan = new Scanner(System.in);
-        System.out.println("Clinic Manager is running.");
         List<Provider> providers = getProvider();
         Sort.sortProviders(providers);
         printProviders(providers);
+        System.out.println("Rotation list for the technicians");
+        System.out.println("Currently working on it");
+        //Idk how to do this.
+        System.out.println("Clinic Manager is running.");
         while(true){
             System.out.println("Please enter a command:");
             userCommand = scan.nextLine();
@@ -30,6 +32,24 @@ public class ClinicManager  {
     }
     private void runCommand(String[] command){
         checkCommand(command);
+        if(command[0].equals("D")){
+            //scheduleOfficeAppointment(commandInputs, officeAppointments);
+        }
+        else if(command[0].equals("T")){
+            //scheduleImagingAppointment(commandInputs, imagingAppointments);
+        }
+        else if(command[0].equals("C")){
+            //cancelAppointment(commandInputs, officeAppointments, imagingAppointments);
+        }
+        else if(command[0].equals("R")){
+            //rescheduleAppointment(appointments);
+        }
+        else if(command[0].contains("P")){
+            //printCommands(commandInputs[0], providers,appointments);
+        }
+        else{
+            System.out.println("Invalid Command");
+        }
     }
     private void checkCommand(String[] commandInputs){
         if(commandInputs.length == 0){
