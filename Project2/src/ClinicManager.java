@@ -1,20 +1,26 @@
 package src;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.Iterator;
 
 public class ClinicManager  {
     public void run() {
         String userCommand = "";
         Scanner scan = new Scanner(System.in);
         List<Provider> providers = getProvider();
-        Sort.sortProviders(providers);
+        if(providers == null){
+            System.out.println("Failed to load the providers");
+            return;
+        }
+        List<Technician> technicians = getTechicians(providers);
+        //System.out.println("Before:");
+        //printTechicians(technicians);
+        //Sort.sortProviders(providers);
         printProviders(providers);
+        technicians = reverseList(technicians);
         System.out.println("Rotation list for the technicians");
-        System.out.println("Currently working on it");
-        //Idk how to do this.
+        //System.out.println("After:");
+        printTechicians(technicians);
         System.out.println("Clinic Manager is running.");
         while(true){
             System.out.println("Please enter a command:");
@@ -92,7 +98,7 @@ public class ClinicManager  {
         return false;
     }
     private List<Provider> getProvider(){
-        List<Provider> providers = new List();
+        List<Provider> providers = new List<>();
         String fileDirectory = "";
         System.out.println(System.getProperty("user.dir"));
         if(System.getProperty("os.name").equalsIgnoreCase("Mac OS X") || System.getProperty("os.name").equalsIgnoreCase("Linux")){
@@ -119,12 +125,62 @@ public class ClinicManager  {
                 providers.add(new Technician(getProfile(providersInfo), getLocation(providersInfo), Integer.parseInt(providersInfo[providersInfo.length -1])));
             }
         }
+        fileReader.close();
         return providers;
+    }
+    public List<Technician> getTechicians(List<Provider> providers){
+        List<Technician> technicians = new List<Technician>();
+        for(int i = 0; i < providers.size(); i++){
+            if(providers.get(i) instanceof Technician){
+                technicians.add((Technician) providers.get(i));
+            }
+        }
+        return technicians;
+    }
+    public List<Technician> reverseList(List<Technician> technicians){
+        List<Technician> reversedList = new List<>();
+        for(int i = technicians.size() -1; i >= 0; i--){
+            reversedList.add(technicians.get(i));
+            //System.out.println(technicians.get(i));
+        }
+        return reversedList;
     }
     private void printProviders(List<Provider> providers){
         for(int i = 0; i < providers.size(); i++){
             System.out.println(providers.get(i));
         }
+    }
+    private void printTechicians(List<Technician> technicians){
+        for(int i = 0; i < technicians.size(); i++){
+            String fullName = technicians.get(i).getFullName();
+            String townName = getTownName(technicians.get(i).getLocation());
+            System.out.print(fullName + " (" +townName+")");
+            if(i < technicians.size() -1){
+                System.out.print(" -> ");
+            }
+        }
+        System.out.println();
+    }
+    private String getTownName(Location location){
+        if(location.getZipCode().equalsIgnoreCase("08807")){
+            return "BRIDGEWATER";
+        }
+        else if(location.getZipCode().equalsIgnoreCase("08817")){
+            return "EDISON";
+        }
+        else if(location.getZipCode().equalsIgnoreCase("08854")){
+            return "PISCATAWAY";
+        }
+        else if(location.getZipCode().equalsIgnoreCase("08542")){
+            return "PRINCETON";
+        }
+        else if(location.getZipCode().equalsIgnoreCase("07960")){
+            return "MORRISTOWN";
+        }
+        else if(location.getZipCode().equalsIgnoreCase("07066")){
+            return "CLARK";
+        }
+        return "";
     }
     private Profile getProfile(String[] providersInfo){
         return new Profile(providersInfo[1], providersInfo[2], getDOB(providersInfo));

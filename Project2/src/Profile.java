@@ -51,6 +51,9 @@ public class Profile implements Comparable<Profile> {
     public String getLastName() {
         return lname;
     }
+    public String getFullName(){
+        return fname + " " +lname;
+    }
 
     public static void main(String[] args){
         //different first name

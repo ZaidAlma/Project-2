@@ -7,6 +7,10 @@ public class Person implements Comparable<Person>{
         this.profile = profile;
     }
 
+    public String getFullName(){
+        return profile.getFullName();
+    }
+
 
     @Override
     public int compareTo(Person otherPerson) {
