@@ -13,13 +13,9 @@ public class ClinicManager  {
             return;
         }
         List<Technician> technicians = getTechicians(providers);
-        //System.out.println("Before:");
-        //printTechicians(technicians);
-        //Sort.sortProviders(providers);
         printProviders(providers);
         technicians = reverseList(technicians);
         System.out.println("Rotation list for the technicians");
-        //System.out.println("After:");
         printTechicians(technicians);
         System.out.println("Clinic Manager is running.");
         while(true){
