@@ -1,5 +1,7 @@
 package src;
 
+import src.util.Date;
+
 public class Imaging extends Appointment {
     private Radiology room;
 

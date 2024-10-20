@@ -1,9 +1,30 @@
 package src;
 
+import src.util.Date;
+import src.util.List;
+
 import java.io.File;
 import java.util.Scanner;
 
 public class ClinicManager  {
+
+    private Date parseDate(String string){
+        Date newDate;
+        String[] date = string.split("/");
+        if(date.length != 3){
+            System.out.println("Invalid Date Format");
+            return null;
+        }
+        try{
+            newDate = new Date();
+        }
+
+//        public Date(String month, String day, String year){
+//            this.month = Integer.parseInt(month);
+//            this.day = Integer.parseInt(day);
+//            this.year = Integer.parseInt(year);
+        //}
+    }
     public void run() {
         String userCommand = "";
         Scanner scan = new Scanner(System.in);
@@ -13,13 +34,9 @@ public class ClinicManager  {
             return;
         }
         List<Technician> technicians = getTechicians(providers);
-        //System.out.println("Before:");
-        //printTechicians(technicians);
-        //Sort.sortProviders(providers);
         printProviders(providers);
         technicians = reverseList(technicians);
         System.out.println("Rotation list for the technicians");
-        //System.out.println("After:");
         printTechicians(technicians);
         System.out.println("Clinic Manager is running.");
         while(true){
@@ -39,7 +56,7 @@ public class ClinicManager  {
     private void runCommand(String[] command){
         checkCommand(command);
         if(command[0].equals("D")){
-            //scheduleOfficeAppointment(commandInputs, officeAppointments);
+            scheduleOfficeAppointment(command);
         }
         else if(command[0].equals("T")){
             //scheduleImagingAppointment(commandInputs, imagingAppointments);
@@ -57,6 +74,42 @@ public class ClinicManager  {
             System.out.println("Invalid Command");
         }
     }
+
+    private void scheduleOfficeAppointment(String[] commands){
+        if(commands.length != 7){
+            System.out.println("Invalid Tokens");
+            return;
+        }
+        String[] date = commands[1].split("/");
+        Date appointmentDate = new Date(date[0], date[1], date[2]);
+        if(!appointmentDate.isValid()){
+            System.out.println("Invalid Date Format");
+        }
+
+        int checkTimeSlot;
+        try{
+            checkTimeSlot = Integer.parseInt(commands[2]);
+        } catch (NumberFormatException e) {
+            System.out.println("Not Numeric");
+            throw new NumberFormatException();
+        }
+        //Timeslot timeslot =
+
+
+    }
+    public Timeslot get(){
+        return null;
+    }
+//    public void cancelAppointment(Appointment appointment){
+//        if (appointments.contain(appointment) == true){
+//            appointments.remove(appointment);
+//            System.out.println("Appointment successfully removed!");
+//        }
+//        else {
+//            System.out.println("Appointment does not exist");
+//        }
+//    }
+
     private void checkCommand(String[] commandInputs){
         if(commandInputs.length == 0){
             System.out.println("Invalid Command");
@@ -105,7 +158,7 @@ public class ClinicManager  {
             fileDirectory = System.getProperty("user.dir")+"/src/providers.txt";
         }
         else if(System.getProperty("os.name").contains("Windows")){
-            fileDirectory = System.getProperty("user.dir") + "\\src\\providers.txt";
+            fileDirectory = System.getProperty("user.dir") + "\\Project2\\src\\providers.txt";
         }
         File textFile;
         Scanner fileReader = null;

@@ -1,4 +1,7 @@
 package src;
+
+import src.util.Date;
+
 /**
  * This class represents an appointment, including the date, timeslot, patient profile, and provider.
  * It provides methods to retrieve appointment details, calculate the charge based on the provider's specialty,
@@ -31,6 +34,10 @@ public class Appointment implements Comparable<Appointment> {
 
     public Person getProvider() {
         return provider;
+    }
+
+    public Timeslot getTimeSlot(){
+        return timeslot;
     }
 
     public int getCharge() {

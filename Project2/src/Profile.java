@@ -1,5 +1,7 @@
 package src;
 
+import src.util.Date;
+
 /**
  * This class represents a profile of a patient, including their first name, last name, and date of birth.
  * It implements the Comparable interface to allow sorting of profiles by last name, first name, and date of birth.

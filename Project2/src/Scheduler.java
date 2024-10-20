@@ -1,4 +1,6 @@
 package src;
+import src.util.Date;
+
 import java.util.Scanner;
 /**
  * This class represents the scheduler system for managing patient records at the clinic.
