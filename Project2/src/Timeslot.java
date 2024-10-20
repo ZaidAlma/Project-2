@@ -9,6 +9,20 @@ package src;
 
 
 public class Timeslot implements Comparable<Timeslot>{
+<<<<<<< HEAD
+=======
+    /*
+    SLOT1 (9, 0), //9:30 am
+    SLOT2 (10, 45), //10:45 am
+    SLOT3 (11, 15), //11:15 am
+    SLOT4 (13, 30), //1:30 pm
+    SLOT5 (15, 0), //3:00 pm
+    SLOT6 (16, 15); //4:15 pm
+
+     */
+
+
+>>>>>>> e00f3610221ad437627ee028644d315e27ff524a
     private final int hour;
     private final int minute;
 
@@ -63,21 +77,28 @@ public class Timeslot implements Comparable<Timeslot>{
         return -5;
     }
     @Override
+<<<<<<< HEAD
     public boolean equals(Object obj){
         if(obj instanceof Timeslot){
             if(this.compareTo((Timeslot)obj) == 0){
                 return true;
             }
         }
+=======
+    public boolean equals(Timeslot timeslot){
+>>>>>>> e00f3610221ad437627ee028644d315e27ff524a
         return false;
     }
     @Override
     public String toString(){
         return hour +":" +minute;
     }
+<<<<<<< HEAD
 
     public static Timeslot getTimeslots(int timeslotNumber) {
         return timeslots[timeslotNumber - 1];
     }
 
+=======
+>>>>>>> e00f3610221ad437627ee028644d315e27ff524a
 }
