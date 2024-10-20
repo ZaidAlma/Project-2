@@ -13,7 +13,7 @@ public class Timeslot implements Comparable<Timeslot>{
     private final int minute;
 
     // Predefined array of timeslots, based on the given schedule
-    private Timeslot[] timeslots = {
+    private static final Timeslot[] timeslots = {
             new Timeslot(9, 0),   // Timeslot 1: 9:00 AM
             new Timeslot(9, 30),  // Timeslot 2: 9:30 AM
             new Timeslot(10, 0),  // Timeslot 3: 10:00 AM
@@ -76,7 +76,7 @@ public class Timeslot implements Comparable<Timeslot>{
         return hour +":" +minute;
     }
 
-    public Timeslot getTimeslots(int timeslotNumber) {
+    public static Timeslot getTimeslots(int timeslotNumber) {
         return timeslots[timeslotNumber - 1];
     }
 

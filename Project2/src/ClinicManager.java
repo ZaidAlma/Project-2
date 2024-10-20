@@ -93,12 +93,18 @@ public class ClinicManager  {
             System.out.println("Not Numeric");
             throw new NumberFormatException();
         }
-        //Timeslot timeslot =
+        Timeslot timeslot = Timeslot.getTimeslots(checkTimeSlot);
+        if(timeslot == null){
+            System.out.println("Invalid timeslot");
+        }
+        String firstName = commands[3];
+        String lastName = commands[4];
+        Date dob = parseDate(commands[5]);
+        if(dob == null || !dob.isValid()){
+            System.out.println("Invalid patient DOB");
+        }
 
 
-    }
-    public Timeslot get(){
-        return null;
     }
 //    public void cancelAppointment(Appointment appointment){
 //        if (appointments.contain(appointment) == true){
