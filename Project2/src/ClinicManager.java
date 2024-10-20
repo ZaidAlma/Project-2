@@ -8,23 +8,6 @@ import java.util.Scanner;
 
 public class ClinicManager  {
 
-    private Date parseDate(String string){
-        Date newDate;
-        String[] date = string.split("/");
-        if(date.length != 3){
-            System.out.println("Invalid Date Format");
-            return null;
-        }
-        try{
-            newDate = new Date();
-        }
-
-//        public Date(String month, String day, String year){
-//            this.month = Integer.parseInt(month);
-//            this.day = Integer.parseInt(day);
-//            this.year = Integer.parseInt(year);
-        //}
-    }
     public void run() {
         String userCommand = "";
         Scanner scan = new Scanner(System.in);
@@ -99,12 +82,13 @@ public class ClinicManager  {
         }
         String firstName = commands[3];
         String lastName = commands[4];
-        Date dob = parseDate(commands[5]);
+        Date dob = getDate(commands[5]);
         if(dob == null || !dob.isValid()){
             System.out.println("Invalid patient DOB");
         }
-
-
+    }
+    private Date getDate(String dateString){
+        return new Date(dateString.split("/")[0], dateString.split("/")[1], dateString.split("/")[2]);
     }
 //    public void cancelAppointment(Appointment appointment){
 //        if (appointments.contain(appointment) == true){
