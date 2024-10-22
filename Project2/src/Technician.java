@@ -1,7 +1,7 @@
 package src;
 
 public class Technician extends Provider{
-    private int ratePerVisit;
+    private final int ratePerVisit;
 
     public Technician(Profile profile, Location location, int ratePerVisit){
         super(profile, location);

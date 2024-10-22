@@ -7,7 +7,7 @@ import src.util.Date;
  * It provides methods to retrieve appointment details, calculate the charge based on the provider's specialty,
  * and compare appointments by date, timeslot, and patient.
  *
- * @author Sydney Pacheco
+ * @author Zaid Almadani
  */
 
 
@@ -17,6 +17,14 @@ public class Appointment implements Comparable<Appointment> {
     protected Person patient;
     protected Person provider;;
 
+    /**
+     * A constructor that takes in a date, timeslot, patient, and product to make an object of Appointment type
+     *
+     * @param date
+     * @param timeslot
+     * @param patient
+     * @param provider
+     */
     public Appointment(Date date, Timeslot timeslot, Person patient, Person provider) {
         this.date = date;
         this.timeslot = timeslot;
@@ -24,6 +32,10 @@ public class Appointment implements Comparable<Appointment> {
         this.provider = provider;
     }
 
+    /**
+     * return the patient information as a person object
+     * @return patient The patient
+     */
     public Person getPatient() {
         return patient;
     }
@@ -40,6 +52,10 @@ public class Appointment implements Comparable<Appointment> {
         return timeslot;
     }
 
+    public void setTimesSlot(Timeslot timeslot1){
+        this.timeslot = timeslot1;
+    }
+
     public int getCharge() {
         if (provider instanceof Provider){
             return ((Provider)provider).rate();
@@ -49,11 +65,20 @@ public class Appointment implements Comparable<Appointment> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj){
+            return true;
+        }
+        if (!(obj instanceof Appointment)){
+            return false;
+        }
         Appointment that = (Appointment) obj;
-        return date.equals(that.date) && timeslot == that.timeslot && patient.equals(that.patient);
+        return date.equals(that.date) &&
+                timeslot.equals(that.timeslot) &&
+                patient.equals(that.patient);
     }
+
+
+
 
     @Override
     public int compareTo(Appointment other) {
@@ -63,6 +88,8 @@ public class Appointment implements Comparable<Appointment> {
         if (timeslotComparison != 0) return timeslotComparison;
         return this.patient.compareTo(other.patient);
     }
+
+
 
     @Override
     public String toString() {

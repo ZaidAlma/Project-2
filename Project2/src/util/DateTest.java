@@ -1,3 +1,9 @@
+/**
+ *This class is a JUnit test class that tests the isValid and isLeapYear methods from the date class
+ *
+ * @author Zaid Almadani
+ */
+
 package src.util;
 
 import org.junit.Test;
@@ -5,6 +11,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DateTest {
+
 
     @Test
     public void testValidLeaperYear() {
@@ -17,6 +24,7 @@ public class DateTest {
         Date validDate = new Date(2,20,2020);
         assertTrue(validDate.isValid());
     }
+
 
     @Test
     public void testInvalidLeapYear() {

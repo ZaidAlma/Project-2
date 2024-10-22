@@ -1,5 +1,7 @@
 package src.util;
 
+import src.Appointment;
+
 /**
  * This class represents a Date with a specific day, month, and year.
  * It provides functionality to check if the date is valid, including leap year calculations.
@@ -53,8 +55,18 @@ public class Date implements Comparable<Date> {
     }
 
     @Override
-    public String toString() {
-        return month + "/" + day + "/" + year;
+    public boolean equals(Object object){
+            if (this == object){
+                return true;
+            }
+            if (!(object instanceof Date)){
+                return false;
+        }
+
+            Date date2 = (Date) object;
+            return this.year == date2.year &&
+                    this.month == date2.month &&
+                    this.day == date2.day;
     }
 
 

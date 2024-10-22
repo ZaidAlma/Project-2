@@ -15,7 +15,7 @@ public class Patient extends Person {
 
     public Patient(Profile profile) {
         super(profile);
-//        this.profile = profile;
+        this.profile = profile;
         this.visits = null;
     }
 
@@ -48,13 +48,14 @@ public class Patient extends Person {
         return totalCharge;
     }
 
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Patient other = (Patient) obj;
+        if (!(obj instanceof Patient other)) return false;
         return profile.equals(other.profile);
     }
+
 
     @Override
     public String toString() {

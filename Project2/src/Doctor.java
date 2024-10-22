@@ -1,5 +1,10 @@
 package src;
 
+/**
+ *This class represent a doctor, including their location, speciality, and how much they charge for their specialties.
+ *
+ * @author Zaid Almadani
+ */
 public class Doctor extends Provider {
     private Specialty specialty;//encapsulate the rate per visit based on specialty
     private String npi; //National Provider Identification unique to the doctor

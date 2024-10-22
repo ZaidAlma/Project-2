@@ -1,4 +1,7 @@
 package src;
+
+import java.sql.Time;
+
 /**
  * This enum represents the available timeslots for appointments at the clinic.
  * Each timeslot is associated with a specific hour and minute of the day.
@@ -80,9 +83,7 @@ public class Timeslot implements Comparable<Timeslot>{
         }
         return false;
     }
-    public boolean equals(Timeslot timeslot){
-        return false;
-    }
+
     @Override
     public String toString(){
         return hour +":" +minute;

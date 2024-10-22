@@ -1,4 +1,10 @@
 package src;
+/**
+ * This enum represents an imaging. It contains the date of the appointment, time of the appointment, the patient of the appointment, provider, and the room where the appointment is located at
+ *
+ *
+ * @author Zaid Almadani
+ */
 
 import src.util.Date;
 
@@ -10,6 +16,10 @@ public class Imaging extends Appointment {
         this.room = room;
     }
 
+    /**
+     * Returns the room number of the appointment
+     * @return room   the room number of the appointment
+     */
     public Radiology getRoom(){
         return room;
     }

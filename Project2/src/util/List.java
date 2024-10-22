@@ -1,7 +1,6 @@
 package src.util;
 
 import java.util.Iterator;
-import java.util.ListIterator;
 
 /**
  * This class represents a dynamic list of objects, allowing for adding, removing, and searching for objects.
@@ -38,8 +37,17 @@ public class List<E> implements Iterable<E> {
         objects = newobjects;
     }
 
+//    public boolean contains(E e) {
+//        return find(e) != NOT_FOUND;
+//    }
+
     public boolean contains(E e) {
-        return find(e) != NOT_FOUND;
+        for (int i = 0; i < size; i++) {
+            if (objects[i].equals(e)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -57,7 +65,7 @@ public class List<E> implements Iterable<E> {
         size++;
     }
 
-    public void remove(E e) {
+    public boolean remove(E e) {
         int index = find(e);
         if (index != NOT_FOUND) {
             for (int i = index; i < size - 1; i++) {
@@ -65,7 +73,9 @@ public class List<E> implements Iterable<E> {
             }
             objects[size - 1] = null;
             size--;
+            return true;
         }
+        return false;
     }
 
     @Override
